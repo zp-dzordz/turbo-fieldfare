@@ -48,3 +48,7 @@ tmp/
 __pycache__/
 *.pyc
 .venv/
+
+# Skills
+skills/
+.swift-version

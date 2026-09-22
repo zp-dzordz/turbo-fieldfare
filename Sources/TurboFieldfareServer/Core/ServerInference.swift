@@ -1136,7 +1136,16 @@ public actor ServerModelSession: ServerInferenceBackend {
             (request.enableThinking || reasoningTokens > 0)
                 ? OpenAIUsage.CompletionTokensDetails(reasoningTokens: reasoningTokens)
                 : nil
-        return ServerCompletion(
+        
+//      public init(content: String,
+//                  reasoningContent: String? = nil,
+//                  toolCalls: [ParsedToolCall],
+//                  finishReason: String,
+//                  usage: OpenAIUsage,
+//                  prefillSeconds: Double = 0,
+//                  decodeSeconds: Double = 0) {
+      
+      return ServerCompletion(
             content: content,
             reasoningContent: finalReasoning,
             toolCalls: calls,
@@ -1144,10 +1153,10 @@ public actor ServerModelSession: ServerInferenceBackend {
             usage: OpenAIUsage(promptTokens: result.prefillTokens,
                                completionTokens: result.newTokens,
                                totalTokens: result.prefillTokens + result.newTokens,
-                               cachedTokens: result.cachedPromptTokens),
+                               cachedTokens: result.cachedPromptTokens,
+                               completionTokensDetails: usageDetails),
             prefillSeconds: result.prefillSeconds,
-            decodeSeconds: result.decodeSeconds),
-            completionTokensDetails: usageDetails))
+            decodeSeconds: result.decodeSeconds)
     }
 
     private func renderPrompt(_ request: ValidatedChatRequest) throws -> [Int32] {

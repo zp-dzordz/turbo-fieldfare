@@ -1,0 +1,8 @@
+../../.build/release/TurboFieldfareCLI \
+	--model ../../scratch/gemma4.gturbo \
+	--messages-file "../../docs/benchmark-prompts/real-generation-v1/short-explanation.json" \
+	--max-new 1024 \
+	--max-context 4096 \
+	--temperature 0.2 \
+	--top-k 64 \
+	--top-p 0.95

@@ -1,0 +1,48 @@
+#curl -s http://127.0.0.1:8080/v1/chat/completions \
+#  -H 'Content-Type: application/json' \
+#  -d '{
+#    "model": "gemma-4-26b-a4b-it",
+#    "messages": [
+#      {
+#        "role": "system",
+#        "content": "THIS IS MY STABLE SYSTEM PROMPT"
+#      },
+#      {
+#        "role": "user",
+#        "content": "First request"
+#      }
+#    ],
+#    "temperature": 0,
+#    "max_completion_tokens": 16
+#  }'
+
+#{"model":"gemma-4-26b-a4b-it","usage":{"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":16},"prompt_tokens":26,"total_tokens":42,"completion_tokens":16},"choices":[{"index":0,"message":{"reasoning_content":"\"First request\"\nThe user is initiating a conversation or testing","role":"assistant","content":""},"finish_reason":"length"}],"object":"chat.completion","id":"chatcmpl-95b9e48b2f3e42fbaddb2ab93d3cc0d9","created":1789643461}%
+
+
+
+curl -s http://127.0.0.1:8080/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "gemma-4-26b-a4b-it",
+    "messages": [
+      {
+        "role": "system",
+        "content": "THIS IS MY STABLE SYSTEM PROMPT"
+      },
+      {
+        "role": "user",
+        "content": "First request"
+      },
+      {
+        "role":"assistant",
+        "content":"",
+        "reasoning_content":"\"First request\"\nThe user is initiating a conversation or testing"
+      },
+      {
+        "role": "user",
+        "content": "Second request"
+      }
+    ],
+    "temperature": 0,
+    "max_completion_tokens": 16
+  }' | jq '.usage'#

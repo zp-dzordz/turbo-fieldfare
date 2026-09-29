@@ -1,0 +1,5 @@
+../../.build/release/TurboFieldfareServer \
+	--model ../../scratch/gemma4.gturbo \
+	--port 8080 \
+	--max-context 65536 \
+	--thinking on
